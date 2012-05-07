@@ -429,4 +429,10 @@ set background=dark
 "colorscheme molokai
 colorscheme twilight
 
+" solia
 
+"syntax enable
+"set background=dark
+" light にしたければ下
+" set background=light
+"colorscheme molokai
