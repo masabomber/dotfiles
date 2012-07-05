@@ -436,3 +436,9 @@ colorscheme twilight
 " light にしたければ下
 " set background=light
 "colorscheme molokai
+
+"全角スペースを表示
+highlight JpSpace cterm=underline ctermfg=Blue guifg=Bule
+au BufRead,BufNew * match JpSpace /　/
+
+
