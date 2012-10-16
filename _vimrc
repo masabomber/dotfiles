@@ -29,6 +29,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'gmarik/snipmate.vim'
 Bundle 'pix/vim-align'
 "Bundle 'tsaleh/vim-tcomment'
+Bundle 'othree/html5.vim'
 
 Bundle 'cakephp.vim'
 Bundle 'php.vim'
@@ -196,9 +197,9 @@ let $PATH = $PATH. ':/usr/bin/w3m'
  " モードラインは無効
  set modelines=0
  " OSのクリップボードを使用する
- set clipboard+=unnamed
- "ヤンクした文字は、システムのクリップボードに入れる"
  set clipboard=unnamed
+ "ヤンクした文字は、システムのクリップボードに入れる"
+ set clipboard=unnamed,autoselect
 
 "makeprg
  "set makeprg=php\ -l\ %
@@ -418,6 +419,8 @@ autocmd FileType python map <silent> <C-P> :call <SID>ExecPy()<CR>
 
 "rubyのタブストップ変更
 au BufNewFile,BufRead *.rb    set nowrap tabstop=2 shiftwidth=2
+"htmlのTabStop変更
+au BufNewFile,BufRead *.html    set nowrap tabstop=2 shiftwidth=2
 
 
 " solia
