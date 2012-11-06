@@ -24,6 +24,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'tomasr/molokai'
 Bundle 'Shougo/vimshell'
 "Bundle 'Shougo/vimproc'
+
 Bundle 'leshill/vim-json'
 Bundle 'mattn/zencoding-vim'
 Bundle 'gmarik/snipmate.vim'
@@ -44,28 +45,59 @@ Bundle 'python.vim'
 filetype plugin indent on
 " required!
 
-" noecomletecache
+"------------------------------------
+" VimShell
+"------------------------------------
+let g:vimshell_enable_interactive = 1
+let g:vimshell_enable_auto_slash = 1
+"nnoremap <C-W><C-W> :VimShell<CR>
 
+"------------------------------------
+" SnipMate
+"------------------------------------
+let g:snippets_dir = '~/.vim/snippets'
+
+"------------------------------------
+" noecomletecache
+"------------------------------------
 " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplcache.
-    let g:neocomplcache_enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 1
-    " Use camel case completion.
-    let g:neocomplcache_enable_camel_case_completion = 1
-    " Use underbar completion.
-    let g:neocomplcache_enable_underbar_completion = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplcache_min_syntax_length = 3
-    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_min_keyword_length = 3
+
+let g:neocomplcache_plugin_completion_length = {
+  \ 'snipmate_complete' : 1,
+  \ 'keyword_complete' : 2,
+  \ 'syntax_complete' : 2
+  \ }
+
+" 候補popup時に先頭の候補を選択しておく
+let g:neocomplcache_enable_auto_select = 1
+
+" Define snippets directory.
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
+
+
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
     " Define dictionary.
     let g:neocomplcache_dictionary_filetype_lists = {
         \ 'default' : '',
         \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-            \ }
+        \ 'scheme' : $HOME.'/.gosh_completions',
+        \ 'javascript' : $HOME.'.vim/dict/javascript.dict',
+        \ 'php' : $HOME.'.vim/dict/php.dict',
+        \ 'vim' : $HOME.'.vim/dict/vim.dict',
+        \ }
 
     " Define keyword.
     if !exists('g:neocomplcache_keyword_patterns')
@@ -197,6 +229,8 @@ let $PATH = $PATH. ':/usr/bin/w3m'
  set modelines=0
  " OSのクリップボードを使用する
  set clipboard+=unnamed
+ "set clipboard=unnamedplus,autoselect
+
  "ヤンクした文字は、システムのクリップボードに入れる"
  set clipboard=unnamed
 
@@ -441,4 +475,9 @@ colorscheme twilight
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Bule
 au BufRead,BufNew * match JpSpace /　/
 
-
+"---------------------
+"surround.vim
+"---------------------
+"s , ssで選択範囲を指定文字でくくる
+nmap s <Plug>Ysurround
+nmap ss <Plug>Yssurround
