@@ -1,0 +1,13 @@
+メモ
+
+
+git clone git@github.com:masabomber/dotfiles.git
+
+ln -s ~/dotfiles/_vimrc ~/.vimrc
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/dotfiles/vimfiles/Vundle.vim
+
+
+vim　開く
+
+:PluginInstallを実行する:
